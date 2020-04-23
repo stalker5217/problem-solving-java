@@ -9,7 +9,7 @@ public class _12934 {
         Solution_12934 s = new Solution_12934();
         long n = 10;
 
-        System.out.println(s.solution(144));
+        System.out.println(s.solution(n));
     }
 }
 
