@@ -1,4 +1,4 @@
-package PROGRAMMERS.LEVEL_1;
+package PROGRAMMERS.LEVEL_2;
 
 /**
  * 피보나치 수
