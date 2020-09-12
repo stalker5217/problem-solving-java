@@ -17,9 +17,7 @@ public class _43164 {
                 {"HND", "IAD"},
                 {"JFK", "HND"}
         };
-        for(String city : s.solution(tickets)){
-            System.out.println(city);
-        }
+        for(String city : s.solution(tickets)) System.out.println(city);
     }
 }
 
