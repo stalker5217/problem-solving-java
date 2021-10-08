@@ -22,41 +22,30 @@ public class _49191 {
 class Solution_49191{
     public int solution(int n, int[][] results) {
         int[][] adj = new int[n+1][n+1];
-
-        int INF = 123456789;
-
-        for(int i = 1; i <= n ; i++){
-            for(int j = 1 ; j <= n ; j++){
-                adj[i][j] = INF;
-            }
+        for(int[] result : results) {
+            adj[result[0]][result[1]] = 1;
+            adj[result[1]][result[0]] = -1;
         }
 
-        for(int[] result : results){
-            int a = result[0];
-            int b = result[1];
-            adj[a][b] = 1;
-        }
-
-        for(int k = 1 ; k <= n ; k++){
-            for(int i = 1; i <= n ; i++){
-                for(int j = 1 ; j <= n ; j++){
-                    adj[i][j] = Math.min(adj[i][j], adj[i][k] + adj[k][j]);
+        // Floyd
+        for(int k = 1 ; k <= n ; k++) {
+            for(int i = 1 ; i <= n ; i++) {
+                for(int j = 1 ; j <= n ; j++) {
+                    if(adj[i][k] != 0 && adj[i][k] == adj[k][j]) {
+                        adj[i][j] = adj[i][k];
+                    }
                 }
             }
         }
 
         int answer = 0;
-        for(int i = 1 ; i <= n; i++){
-            boolean allConnect = true;
-            for(int j = 1 ; j <= n ; j++){
-                if(i == j) continue;
-                if(adj[i][j] == INF && adj[j][i] == INF){
-                    allConnect = false;
-                    break;
-                }
+        for(int i = 1 ; i <= n ; i++) {
+            int count = n;
+            for(int j = 1 ; j <= n ; j++) {
+                if(adj[i][j] != 0) count--;
             }
-
-            if(allConnect) answer++;
+            // 자기 자신 제외 판별 가능
+            if(count == 1) answer++;
         }
 
         return answer;
