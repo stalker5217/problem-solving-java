@@ -5,13 +5,8 @@ plugins {
 group 'org.example'
 version '1.0-SNAPSHOT'
 
-sourceCompatibility = 1.9
+sourceCompatibility = 17
 
 repositories {
     mavenCentral()
 }
-
-dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
-}
-targetCompatibility = JavaVersion.VERSION_1_9
